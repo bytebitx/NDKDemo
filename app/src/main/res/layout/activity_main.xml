@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_normal_basic_var"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="jni访问java基本类型变量"
+        android:textSize="12sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_basic_static"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btn_normal_basic_var"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_basic_static_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_basic_static"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_reference"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="jni访问引用类型变量"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_basic_static_list"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_ref_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btn_reference"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_main_instance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="jni获取MainActivity实例并回调onResume方法"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_ref_result"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_main_instance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="main onResume"
+        android:textColor="@android:color/holo_red_light"
+        app:layout_constraintTop_toBottomOf="@id/btn_main_instance"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_static"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="jni访问静态变量"
+        app:layout_constraintTop_toBottomOf="@id/tv_main_instance"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_thread_call_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="jni子线程回调java方法"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/btn_static"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_reference_manage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="jni引用管理"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/btn_thread_call_back"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/sample_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_reference_manage"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
