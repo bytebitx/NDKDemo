@@ -24,13 +24,6 @@ message(${CMAKE_CURRENT_LIST_DIR}) # 当前CMakeLists.txt文件所在的绝对�
 message(${ANDROID_ABI})
 
 # set(arg value) 前面是变量名，后面是变量值
-set(FFMPEG_LIBS ${CMAKE_SOURCE_DIR}/ffmpeg/libs)
-message(${FFMPEG_LIBS}/${ANDROID_ABI})
-# 指定在链接目标时找到库文件所需路径
-# 调用add_executable()或add_library()创建目标后，再调用link_directories()是没有效果的
-link_directories(${FFMPEG_LIBS}/${ANDROID_ABI})
-# 在这里，jniLibs目录可以在任意位置，只要link的时候，路径位置正确即可找到对应的
-
 # 设置头文件路径变量
 set(FFMPEG_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/ffmpeg/include)
 set(JVM_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/jvm/include)
@@ -43,14 +36,15 @@ include_directories(
         ${ADD_INCLUDE_DIR}
 )
 
+set(FFMPEG_LIBS ${CMAKE_SOURCE_DIR}/ffmpeg/libs)
 # 设置ffmpeg库变量
-set(ffmpeg-libs
-        avformat
-        avcodec
-        avfilter
-        swresample
-        swscale
-        avutil
+set(FFMPEG_VAR_LIBS
+        ${FFMPEG_LIBS}/${ANDROID_ABI}/libavformat.so
+        ${FFMPEG_LIBS}/${ANDROID_ABI}/libavcodec.so
+        ${FFMPEG_LIBS}/${ANDROID_ABI}/libavfilter.so
+        ${FFMPEG_LIBS}/${ANDROID_ABI}/libswresample.so
+        ${FFMPEG_LIBS}/${ANDROID_ABI}/libswscale.so
+        ${FFMPEG_LIBS}/${ANDROID_ABI}/libavutil.so
 )
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/jvm)
@@ -69,7 +63,7 @@ add_library(main SHARED
 
 target_link_libraries(
         main
-        ${ffmpeg-libs}
+        ${FFMPEG_VAR_LIBS}
         Add
         jvm
         android
@@ -85,4 +79,3 @@ target_link_libraries(
         main
         android
         log)
-
