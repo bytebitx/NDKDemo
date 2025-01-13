@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         external fun staticAccessNormalL(l: Long): Long
         init {
-            System.loadLibrary("main")
+            System.loadLibrary("ndkdemo")
         }
     }
 

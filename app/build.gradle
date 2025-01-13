@@ -47,6 +47,14 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+//        sourceSets {
+//        main {
+//            // The libs directory contains prebuilt libraries that are used by the
+//            // app's library defined in CMakeLists.txt via an IMPORTED target.
+//            jniLibs.srcDirs = ['src/main/cpp/ffmpeg/libs']
+//        }
+//    }
 }
 
 dependencies {

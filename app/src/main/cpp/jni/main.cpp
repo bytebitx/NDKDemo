@@ -5,17 +5,14 @@
 #include <string>
 #include <CPPLog.h>
 #include <jvm.h>
+#include "Add.h"
 
 //由于 FFmpeg 库是 C 语言实现的，告诉编译器按照 C 的规则进行编译
 // 必现这么引入，否则会导致找不到对应的方法，如：undefined symbol: avcodec_configuration()
+// did you mean: extern "C" av_version_info
 extern "C" {
-#include <libavcodec/version.h>
-#include <libavcodec/avcodec.h>
-#include <libavformat/version.h>
-#include <libavutil/version.h>
-#include <libavfilter/version.h>
-#include <libswresample/version.h>
-#include <libswscale/version.h>
+#include "libavutil/avutil.h"
+#include "libavcodec/avcodec.h"
 }
 
 
@@ -25,6 +22,8 @@ JNIEXPORT JNICALL jobject accessBasicVar(JNIEnv *env, jobject thiz, jlong l, jbo
     LOGD("dynamic register accessBasicVar");
     // 根据对象获取对应的class
     jclass cls = env->GetObjectClass(thiz);
+    int sum = add(1, 2);
+    LOGD("sum:%d", sum);
 
     jfieldID lField = env->GetFieldID(cls, "basicL", "J");
     jfieldID bField = env->GetFieldID(cls, "basicB", "Z");
